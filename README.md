@@ -1,46 +1,50 @@
-# Getting Started with Create React App
+# WhoKnewThis 🤔
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**"모르는데요?"** 같은 주제들을 하나씩 던주어주는 랜덤 지식 탐험 서비스입니다.
+매일 하나씩, 혹은 연관된 여러 지식들을 따라가며 간단히 배우고, 알아가요.
 
-## Available Scripts
+> **얕고 넓은 지식**
+> A journey through things that you didn’t know.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## ✨ Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* 랜덤 주제 추천 (daily or on-demand)
+* 주제별 요약 및 키포인트 제공
+* 연관 주제 기반 탐색 (Graph-style)
+* 사용자별 진행 로그 기록
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+---
 
-### `npm test`
+## 🧱 Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| 영역                     | 기술                                 |
+| ---------------------- | ---------------------------------- |
+| Backend - AI 지식 추천 API | FastAPI + LangChain              |
+| Backend - 서비스 API      | Spring Boot                       |
+| Database               | MongoDB → 이후 ElasticSearch 연동     |
+| Deployment             | Docker, Nginx, AWS                  |
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🧪 Sample Topic
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```json
+{
+  "title": "양자 얽힘",
+  "summary": "두 입자가 공간을 초월해 연결되어 있는 양자 현상입니다.",
+  "tags": ["물리학", "양자역학", "정보이론"],
+  "related": ["양자 컴퓨팅", "슈뢰딩거의 고양이"]
+}
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## 🗺️ Roadmap
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- [ ] 기본 FastAPI 지식 추천 API
+- [ ] 랜덤 주제 추천
+- [ ] 주제 간 연관 네비게이션 구현
+- [ ] Mongo ↔ Elastic 연동
+- [ ] 사용자 세션 및 기록 기반 추천
