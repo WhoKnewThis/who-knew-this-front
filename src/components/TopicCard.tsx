@@ -6,17 +6,17 @@ interface Props{
 
 export default function TopicCard({ topic }: Props) {
   return (
-    <div className="bg-white p-6 rounded shadow">
-      <h2 className="text-2xl font-bold mb-2"> {topic.title}</h2>
-
-      <p className="text-gray-700 mb-4">{topic.summary}</p>
+    <div className="bg-btn-sub p-6 rounded shadow">
+      <h2 className="text-bg-primary text-2xl font-bold mb-2"> {topic.title}</h2>
+{/* 
+      <p className="text-gray-700 mb-4">{topic.summary}</p> */}
 
       {/* 태그 */}
       <div className="mb-3 text-sm space-x-2">
         {topic.tags?.map((tag) => (
           <span
             key={tag}
-            className="inline-block bg-blue-100 text-blue-700 px-2 py-1 rounded-full"
+            className="inline-block bg-btn-sub-purple2 text-text-primary px-2 py-1 rounded-full"
           >
             #{tag}
           </span>

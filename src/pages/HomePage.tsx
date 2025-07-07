@@ -6,12 +6,14 @@ export default function HomePage() {
   const { topics, loading, refetch } = useRandomTopics(3);
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="min-h-screen p-6 bg-bg-primary">
       {/* 헤더 */}
       <header className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold text-blue-700">Today’s WKT</h1>
-        <button className="text-blue-600 hover:underline">🔒 로그인</button>
+        <h1 className="text-3xl font-bold text-text-primary">Today’s WKT</h1>
+        <button className="bg-btn-primary text-black p-2 w-24 hover:underline">로그인</button>
       </header>
+
+      {/* 여기에 서치 바 만들어야함 **/}
 
       {/* 콘텐츠 */}
       <main>
@@ -32,9 +34,9 @@ export default function HomePage() {
       <div className="mt-6">
         <button
           onClick={refetch}
-          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+          className="px-4 py-2 bg-btn-primary text-black rounded hover:bg-sky-200"
         >
-          🔁 다른 주제 보기
+          다른 주제 보기
         </button>
       </div>
     </div>
