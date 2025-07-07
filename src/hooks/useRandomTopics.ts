@@ -9,16 +9,16 @@ export interface Topic{
     related_topics:string[];
 }
 
-export const useRandomTopics=()=>{
-    const [topic,setTopic]=useState<Topic|null>(null);
+export const useRandomTopics=(count:number=1)=>{
+    const [topics,setTopics]=useState<Topic[]>([]);
     const [loading,setLoading]=useState(true)
 
     const fetchTopic=async()=>{
         try{
             setLoading(true);
-            const res=await axios.get(`/api/topics/random`);
+            const res=await axios.get(`/api/topics/random?count=${count}`);
             console.log('API 응답 데이터:', res.data);
-            setTopic(res.data[0])
+            setTopics(res.data)
         }catch(error){
             console.error("랜덤 주제 가져오기 실패",error)
         }finally{
@@ -28,8 +28,8 @@ export const useRandomTopics=()=>{
 
  useEffect(() => {
     fetchTopic();
-  }, []);
+  }, [count]);
 
-  return { topic, loading, refetch: fetchTopic };
+  return { topics, loading, refetch: fetchTopic };
 };
 

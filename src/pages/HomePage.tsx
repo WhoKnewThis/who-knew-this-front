@@ -3,7 +3,7 @@ import { useRandomTopics } from "../hooks/useRandomTopics";
 import TopicCard from "../components/TopicCard";
 
 export default function HomePage() {
-  const { topic, loading, refetch } = useRandomTopics();
+  const { topics, loading, refetch } = useRandomTopics(3);
 
   return (
     <div className="min-h-screen bg-gray-50 p-6">
@@ -17,8 +17,12 @@ export default function HomePage() {
       <main>
         {loading ? (
           <p className="text-gray-500">불러오는 중...</p>
-        ) : topic ? (
-          <TopicCard topic={topic} />
+        ) : topics.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {topics.map((topic) => (
+              <TopicCard key={topic.id} topic={topic} />
+            ))}
+          </div>
         ) : (
           <p className="text-red-500">주제를 불러오지 못했습니다.</p>
         )}
