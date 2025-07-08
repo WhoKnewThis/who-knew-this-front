@@ -20,7 +20,7 @@ export default function HomePage() {
         {loading ? (
           <p className="text-gray-500">불러오는 중...</p>
         ) : topics.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="mt-[400px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {topics.map((topic) => (
               <TopicCard key={topic.id} topic={topic} />
             ))}
