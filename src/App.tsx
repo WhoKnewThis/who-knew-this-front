@@ -6,17 +6,26 @@ import { store } from './app/store';
 import HomePage from './pages/HomePage';
 import GlobalStyle from './styles/GlobalStyle';
 import theme from './styles/theme';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import { AppWrapper, ContentWrapper } from './components/Layout';
 
 function App() {
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <Router>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-          </Routes>
-        </Router>
+        <AppWrapper>
+          <Header />
+          <ContentWrapper>
+            <Router>
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+              </Routes>
+            </Router>
+          </ContentWrapper>
+          <Footer />
+        </AppWrapper>
       </ThemeProvider>
     </Provider>
   );

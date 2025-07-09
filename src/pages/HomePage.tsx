@@ -7,12 +7,6 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen p-6 bg-bg-primary">
-      {/* 헤더 */}
-      <header className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold text-text-primary">Today’s WKT</h1>
-        <button className="bg-btn-primary text-black p-2 w-24 hover:underline">로그인</button>
-      </header>
-
       {/* 여기에 서치 바 만들어야함 **/}
 
       {/* 콘텐츠 */}
