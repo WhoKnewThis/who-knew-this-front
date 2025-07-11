@@ -6,7 +6,7 @@ interface Props{
 
 export default function TopicCard({ topic }: Props) {
   return (
-    <div className="bg-btn-sub h-[300px] p-8 rounded shadow">
+    <div className="bg-btn-sub w-[380px] h-[300px] p-8 rounded shadow">
       <h2 className="text-bg-primary text-2xl font-bold mb-2"> {topic.title}</h2>
 {/* 
       <p className="text-gray-700 mb-4">{topic.summary}</p> */}

@@ -8,16 +8,18 @@ export default function HomePage() {
   const { topics, loading, refetch } = useRandomTopics(3);
   const [search, setSearch]=useState("");
   return (
-    <div className="min-h-screen p-6 bg-bg-primary">
+    <div className="overflow-x-auto min-h-screen p-6 bg-bg-primary">
       {/* 여기에 서치 바 만들어야함 **/}
+      <h1 className="text-2xl text-text-primary text-center font-semibold mb-[48px] ">A journey through things that <br/>you didn’t know.</h1>
       <SearchBar value={search} onChange={(e) => setSearch(e.target.value)}/>
       {/* 콘텐츠 */}
       <main>
-        <h1 className="text-text-primary text-2xl font-bold mb-[17px]">What's Today's WKT? </h1>
+        <h1 className="text-text-primary text-2xl font-bold mb-[17px] ml-[360px]">What's Today's WKT? </h1>
         {loading ? (
           <p className="text-gray-500">불러오는 중...</p>
         ) : topics.length > 0 ? (
-          <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-3 gap-[30px] w-[1170px] ml-[360px]">
+            {/** grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 */}
             {topics.map((topic) => (
               <TopicCard key={topic.id} topic={topic} />
             ))}
