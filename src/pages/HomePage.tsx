@@ -10,8 +10,8 @@ export default function HomePage() {
   return (
     <div className="overflow-x-auto min-h-screen p-6 bg-bg-primary">
       {/* 여기에 서치 바 만들어야함 **/}
-      <h1 className="text-2xl text-text-primary text-center font-semibold mb-[48px] ">A journey through things that <br/>you didn’t know.</h1>
-      <SearchBar value={search} onChange={(e) => setSearch(e.target.value)}/>
+      <h1 className="w-[1170px] ml-[360px] text-2xl text-text-primary text-center font-semibold mb-[48px] ">A journey through things that <br/>you didn’t know.</h1>
+        <SearchBar value={search} onChange={(e) => setSearch(e.target.value)}/>
       {/* 콘텐츠 */}
       <main>
         <h1 className="text-text-primary text-2xl font-bold mb-[17px] ml-[360px]">What's Today's WKT? </h1>
