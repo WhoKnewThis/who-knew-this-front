@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function LoginPage() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const isFormValid = email.trim() !== "" && password.trim() !== "";
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-bg-primary text-text-primary">
       {/* 상단 타이틀 */}
@@ -14,26 +19,40 @@ export default function LoginPage() {
 
         {/* Email, Password*/}
         <div className="w-[380px] mb-4">
-          <label className="block text-text-primary2 text-base mb-1">Email</label>
+          <label className="block text-text-primary2 text-base mb-1">
+            Email
+          </label>
           <input
             type="email"
             placeholder="이메일을 입력해주세요"
-            className="w-full h-[50px] box-border px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-btn-sub-purple2"
+            className="w-full h-[50px] box-border px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-btn-sub-purple2 text-bg-primary"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
 
         <div className="w-[380px] mb-4">
-          <label className="block text-text-primary2 text-base mb-1">Password</label>
+          <label className="block text-text-primary2 text-base mb-1">
+            Password
+          </label>
           <input
             type="password"
             placeholder="비밀번호를 입력해주세요"
-            className="w-full h-[50px] box-border px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-btn-sub-purple2"
+            className="w-full h-[50px] box-border px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-btn-sub-purple2 text-bg-primary"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
 
-
         {/* 로그인 버튼 */}
-        <button className="w-[380px] h-[50px] bg-btn-primary text-white py-2 rounded-md mb-4 mt-10 hover:bg-btn-primary2 transition">
+        <button
+          className={`w-[380px] h-[50px] text-white py-2 rounded-md mb-4 mt-10 transition ${
+            isFormValid
+              ? "bg-btn-primary hover:bg-btn-primary2"
+              : "bg-btn-disabled cursor-not-allowed"
+          }`}
+          disabled={!isFormValid}
+        >
           Log In
         </button>
 
@@ -57,7 +76,6 @@ export default function LoginPage() {
           </button>
         </div>
       </div>
-
     </div>
   );
 }
