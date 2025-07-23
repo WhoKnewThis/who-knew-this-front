@@ -1,10 +1,14 @@
 import React from 'react';
+import LoginBtn from './LoginBtn';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
+  const navigate= useNavigate();
   return (
-    <header className="bg-bg-primary text-text-primary p-4 shadow flex justify-between items-center">
-      <h1 className="text-2xl font-bold">Who Knew This?</h1>
-      <button className="bg-btn-primary text-black p-2 w-24 hover:underline">로그인</button>
+    <header className="bg-bg-primary font-italic text-text-primary p-4 shadow flex justify-between items-center">
+      <button onClick={()=>navigate("/")}
+        className="text-2xl font-bold">Who Knew This?</button>
+      <LoginBtn/>
     </header>
   );
 };

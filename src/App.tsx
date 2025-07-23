@@ -9,23 +9,25 @@ import theme from './styles/theme';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { AppWrapper, ContentWrapper } from './components/Layout';
+import LoginPage from './pages/LoginPage';
 
 function App() {
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <AppWrapper>
-          <Header />
-          <ContentWrapper>
-            <Router>
+        <Router>
+          <AppWrapper>
+            <Header />
+            <ContentWrapper>
               <Routes>
                 <Route path="/" element={<HomePage />} />
+                <Route path="/login" element={<LoginPage />} />
               </Routes>
-            </Router>
-          </ContentWrapper>
-          <Footer />
-        </AppWrapper>
+            </ContentWrapper>
+            <Footer />
+          </AppWrapper>
+        </Router>
       </ThemeProvider>
     </Provider>
   );
