@@ -6,7 +6,7 @@ interface Props{
 
 export default function SearchBar({value, onChange}:Props){
     return(
-        <div className="w-[1170px] ml-[624px]">
+        <div className="flex justify-center">
             <input
                 type="text"
                 value={value}
