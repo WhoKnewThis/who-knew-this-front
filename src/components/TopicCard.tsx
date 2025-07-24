@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Topic } from "../hooks/useRandomTopics";
 
 interface Props{
@@ -7,7 +8,9 @@ interface Props{
 export default function TopicCard({ topic }: Props) {
   return (
     <div className="bg-btn-sub w-[380px] h-[300px] p-8 rounded shadow">
-      <h2 className="text-bg-primary text-2xl font-bold mb-2"> {topic.title}</h2>
+      <Link to={`/topic/${topic.id}`}>
+        <h2 className="text-bg-primary text-2xl font-bold mb-2"> {topic.title}</h2>
+      </Link>
 {/* 
       <p className="text-gray-700 mb-4">{topic.summary}</p> */}
 

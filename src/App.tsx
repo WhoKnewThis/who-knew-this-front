@@ -10,6 +10,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import { AppWrapper, ContentWrapper } from './components/Layout';
 import LoginPage from './pages/LoginPage';
+import TopicDetail from './pages/TopicDetail';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/login" element={<LoginPage />} />
+                <Route path="/topic/:topicId" element={<TopicDetail />} />
               </Routes>
             </ContentWrapper>
             <Footer />

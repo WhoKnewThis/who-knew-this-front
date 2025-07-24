@@ -8,8 +8,8 @@ export default function HomePage() {
   const { topics, loading, refetch } = useRandomTopics(3);
   const [search, setSearch] = useState("");
   return (
-    <div className="min-h-screen p-6 bg-bg-primary">
-      <div className="w-[1170px] mx-auto">
+    <div className="min-h-screen bg-bg-primary">
+      <div className="w-[1170px] mx-auto pt-6">
         {/* 여기에 서치 바 만들어야함 **/}
         <h1 className="text-2xl text-text-primary text-center font-semibold mb-[48px] ">
           A journey through things that <br />
