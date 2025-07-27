@@ -2,18 +2,40 @@
 import { useRandomTopics } from "../hooks/useRandomTopics";
 import TopicCard from "../components/TopicCard";
 import SearchBar from "../components/SearhBar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function HomePage() {
   const { topics, loading, refetch } = useRandomTopics(3);
   const [search, setSearch] = useState("");
+  const [text, setText] = useState("");
+  const fullText = "A journey through things that you didn’t know.";
+  const breakPoint = "A journey through things that ";
+
+  useEffect(() => {
+    let i = 0;
+    const intervalId = setInterval(() => {
+      if (i <= fullText.length) {
+        setText(fullText.slice(0, i));
+        i++;
+      } else {
+        clearInterval(intervalId);
+      }
+    }, 100); // Animation speed in ms
+
+    return () => clearInterval(intervalId);
+  }, []);
+
   return (
     <div className="min-h-screen bg-bg-primary">
       <div className="w-[1170px] mx-auto pt-6">
         {/* 여기에 서치 바 만들어야함 **/}
-        <h1 className="text-2xl text-text-primary text-center font-semibold mb-[48px] ">
-          A journey through things that <br />
-          you didn’t know.
+        <h1
+          className="text-5xl text-text-primary text-center font-semibold mb-[48px] h-[128px]"
+          style={{ caretColor: "transparent" }}
+        >
+          {text.substring(0, breakPoint.length)}
+          {text.length > breakPoint.length && <br />}
+          {text.substring(breakPoint.length)}
         </h1>
         <SearchBar value={search} onChange={(e) => setSearch(e.target.value)} />
         {/* 콘텐츠 */}
