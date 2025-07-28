@@ -32,10 +32,10 @@ export default function TopicCard({ topic }: Props) {
       {/* 관련 주제 */}
       {topic.related_topics?.length > 0 && (
         <div className="mt-4">
-          <h3 className="text-base font-semibold text-gray-600 mb-1">
+          <h3 className="text-base font-bold text-gray-600 mb-1">
             🔖Realated Topics
           </h3>
-          <ul className="flex pl-5 text-sm text-gray-800 justify-center gap-4">
+          <ul className="flex pl-5 text-base text-bg-primary justify-center gap-4">
             {topic.related_topics.map((related, i) => (
               <li key={i}>{related}</li>
             ))}
