@@ -7,9 +7,9 @@ interface Props {
 
 export default function TopicCard({ topic }: Props) {
   return (
-    <div className="bg-btn-sub w-[380px] h-[300px] p-8 mt-4 rounded shadow transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+    <div className="bg-btn-sub w-[380px] h-[300px] p-8 mt-6 rounded shadow transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
       <Link to={`/topic/${topic.id}`}>
-        <h2 className="text-bg-primary text-2xl font-bold m-4 text-center">
+        <h2 className="text-bg-primary text-2xl font-bold m-12 text-center">
           {" "}
           {topic.title}
         </h2>
