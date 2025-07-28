@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 import { AppWrapper, ContentWrapper } from './components/Layout';
 import LoginPage from './pages/LoginPage';
 import TopicDetail from './pages/TopicDetail';
+import SignUpPage from './pages/SignUpPage';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/topic/:topicId" element={<TopicDetail />} />
+                <Route path="/sign" element={<SignUpPage/>}/>
               </Routes>
             </ContentWrapper>
             <Footer />

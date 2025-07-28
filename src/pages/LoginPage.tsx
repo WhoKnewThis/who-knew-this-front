@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import SignUpBtn from "../components/SignUpBtn";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -57,12 +58,7 @@ export default function LoginPage() {
         </button>
 
         {/* 회원가입 링크 */}
-        <div className="text-center text-sm text-text-gray mb-4">
-          <p>아직 회원이 아니신가요?</p>
-          <a href="#" className="underline text-btn-primary">
-            회원가입하기
-          </a>
-        </div>
+        <SignUpBtn />
 
         <hr className="w-full my-4" />
 
@@ -79,3 +75,4 @@ export default function LoginPage() {
     </div>
   );
 }
+
