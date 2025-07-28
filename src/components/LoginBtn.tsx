@@ -7,7 +7,7 @@ export default function LoginBtn(){
     return(
         <button
             onClick={()=>navigate('/login')}
-            className="bg-btn-primary text-bg-primary p-2 w-[120px] h-12 rounded-md hover:bg-btn-primary2">Log in
+            className="bg-btn-primary text-lg text-bg-primary p-2 w-[120px] h-12 rounded-md hover:bg-btn-primary2">Log in
         </button>
     );
 }
