@@ -8,4 +8,5 @@ export const AppWrapper = styled.div`
 
 export const ContentWrapper = styled.main`
   flex: 1;
+  background-color: #0F172A;
 `;

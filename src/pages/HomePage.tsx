@@ -26,7 +26,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-bg-primary">
+    <div>
       <div className="w-[1170px] mx-auto pt-6">
         {/* 여기에 서치 바 만들어야함 **/}
         <h1
