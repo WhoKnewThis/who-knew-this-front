@@ -7,13 +7,7 @@ interface Props {
 
 export default function TopicCard({ topic }: Props) {
   return (
-    <div className="bg-btn-sub w-[380px] h-[300px] p-8 mt-6 rounded shadow transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-      <Link to={`/topic/${topic.id}`}>
-        <h2 className="text-bg-primary text-2xl font-bold m-12 text-center">
-          {" "}
-          {topic.title}
-        </h2>
-      </Link>
+    <div className="bg-btn-sub w-[385x] h-[300px] p-8 mt-6 rounded shadow transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
       {/* 
       <p className="text-gray-700 mb-4">{topic.summary}</p> */}
 
@@ -22,12 +16,18 @@ export default function TopicCard({ topic }: Props) {
         {topic.tags?.map((tag) => (
           <span
             key={tag}
-            className="text-base inline-block bg-btn-sub-purple2 text-text-primary px-5 py-2 rounded-full"
+            className="text-base inline-block bg-btn-sub-purple2 text-text-primary px-4 py-2 rounded-full"
           >
             # {tag}
           </span>
         ))}
       </div>
+            <Link to={`/topic/${topic.id}`}>
+        <h2 className="text-bg-primary text-2xl font-bold m-12 text-center">
+          {" "}
+          {topic.title}
+        </h2>
+      </Link>
 
       {/* 관련 주제 */}
       {topic.related_topics?.length > 0 && (
