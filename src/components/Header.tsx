@@ -7,10 +7,8 @@ const Header = () => {
   return (
     <header className="bg-bg-primary font-italic text-text-primary p-4 shadow flex justify-between items-center">
       <button onClick={()=>navigate("/")}
-        className="text-2xl font-bold p-4">Who Knew This?</button>
-      <div className='p-4'>
-        <LoginBtn/>
-      </div>
+        className="text-2xl font-bold">Who Knew This?</button>
+      <LoginBtn/>
     </header>
   );
 };
