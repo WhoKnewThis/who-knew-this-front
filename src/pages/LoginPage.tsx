@@ -8,7 +8,7 @@ export default function LoginPage() {
   const isFormValid = email.trim() !== "" && password.trim() !== "";
 
   return (
-    <div className="flex flex-col items-center justify-center text-text-primary">
+    <div className="m-8 flex flex-col items-center justify-center text-text-primary">
       {/* 상단 타이틀 */}
       <h1 className="text-3xl font-bold mb-8">Who Knew This</h1>
 
