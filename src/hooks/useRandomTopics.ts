@@ -16,7 +16,7 @@ export const useRandomTopics=(count:number=1)=>{
     const fetchTopic=async()=>{
         try{
             setLoading(true);
-            const res=await axios.get(`/api/topics/random?count=${count}`);
+            const res=await axios.get(`http://158.180.68.123/api/topics/random?count=${count}`);
             console.log('API 응답 데이터:', res.data);
             setTopics(res.data)
         }catch(error){
