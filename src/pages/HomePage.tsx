@@ -4,10 +4,10 @@ import { useRandomTopics } from "../hooks/useRandomTopics";
 import TopicCard from "../components/TopicCard";
 import SearchBar from "../components/SearhBar";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from "../api/axios";
 
 export default function HomePage() {
-  const { topics, loading, refetch } = useRandomTopics();
+  const { topics, loading, refetch } = useRandomTopics(3);
   const [query, setQuery] = useState("");
   const [text, setText] = useState("");
   const navigate = useNavigate();
@@ -33,8 +33,8 @@ export default function HomePage() {
       alert("검색어를 입력해주세요.");
       return;
     }
-    try {
-      const response = await axios.get(`/api/topics/search?q=${query}`);
+    try { 
+      const response = await axios.get("/topics/search", { params: { q: query } });
       const results = response.data;
       const exactMatch = results.find(
         (topic: { title: string }) =>
@@ -74,12 +74,10 @@ export default function HomePage() {
             <h1 className="text-text-primary text-2xl font-bold">
               What's Today's WKT?{" "}
             </h1>
-            <button
-              onClick={refetch}
-              className="px-4 py-2 bg-btn-primary text-black rounded hover:bg-sky-200"
-            >
+            <button onClick={refetch} disabled={loading} className="... disabled:opacity-60">
               다른 주제 보기
             </button>
+
           </div>
           {loading ? (
             <p className="text-gray-500">불러오는 중...</p>
