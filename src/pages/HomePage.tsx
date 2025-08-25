@@ -1,13 +1,13 @@
 // src/pages/HomePage.tsx
+import { useState, useEffect } from "react";
 import { useRandomTopics } from "../hooks/useRandomTopics";
 import TopicCard from "../components/TopicCard";
 import SearchBar from "../components/SearhBar";
-import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "../api/axios";
+import axios from "axios";
 
 export default function HomePage() {
-  const { topics, loading, refetch } = useRandomTopics(3);
+  const { topics, loading, refetch } = useRandomTopics();
   const [query, setQuery] = useState("");
   const [text, setText] = useState("");
   const navigate = useNavigate();
