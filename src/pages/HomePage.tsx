@@ -9,8 +9,10 @@ import axios from "../api/axios";
 export default function HomePage() {
   const { topics, loading, refetch } = useRandomTopics(3);
   const [query, setQuery] = useState("");
+  const [searching, setSearching]=useState(false);
   const [text, setText] = useState("");
   const navigate = useNavigate();
+
   const fullText = "A journey through things that you didn’t know.";
   const breakPoint = "A journey through things that ";
 
@@ -23,34 +25,58 @@ export default function HomePage() {
       } else {
         clearInterval(intervalId);
       }
-    }, 100); // Animation speed in ms
-
+    }, 100);
     return () => clearInterval(intervalId);
   }, []);
 
-  const handleSearch = async () => {
-    if (query.trim() === "") {
-      alert("검색어를 입력해주세요.");
-      return;
-    }
-    try { 
-      const response = await axios.get("/topics/search", { params: { q: query } });
-      const results = response.data;
-      const exactMatch = results.find(
-        (topic: { title: string }) =>
-          topic.title.toLowerCase() === query.toLowerCase()
-      );
+  // 한/영 통합 정규화
+  const normalize = (s: string) => s.normalize("NFKC").trim().toLowerCase();
 
-      if (exactMatch) {
-        navigate(`/topic/${exactMatch.id}`);
-      } else {
-        alert("정확히 일치하는 주제를 찾을 수 없습니다.");
+  const handleSearch = async () => {
+    if (searching) return;
+    const q = query.trim();
+    if (!q) {
+        alert("검색어를 입력해주세요.");
+        return;
+    }
+    
+try {
+      setSearching(true);
+      const { data } = await axios.get("/topics/search", { params: { keyword: q, q } });
+      const results: Array<{ id: number | string; title: string }> =
+        Array.isArray(data) ? data : [];
+
+      const normQ = normalize(q);
+
+      // 1) 정확 일치
+      const exact = results.find((t) => normalize(t.title) === normQ);
+      if (exact) {
+        navigate(`/topics/${exact.id}`);
+        return;
       }
+
+      // 2) 부분 일치
+      const partial = results.filter((t) => normalize(t.title).includes(normQ));
+      if (partial.length === 1) {
+        navigate(`/topics/${partial[0].id}`);
+        return;
+      }
+      if (partial.length > 1) {
+        // 검색결과 페이지가 있다면 거기로 보냄
+        navigate(`/search?query=${encodeURIComponent(q)}`);
+        return;
+      }
+
+      // 3) 무매칭
+      alert("일치하는 주제를 찾지 못했습니다. 다른 키워드로 검색해 보세요.");
     } catch (error) {
       console.error("Search failed", error);
       alert("검색 중 오류가 발생했습니다.");
+    } finally {
+      setSearching(false);
     }
   };
+
 
   return (
     <div>

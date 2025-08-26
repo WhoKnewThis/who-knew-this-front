@@ -68,7 +68,7 @@ export default function TopicDetail() {
     <div
       className="
         min-h-screen
-        bg-[repeating-linear-gradient(90deg,rgba(14,14,27,1)_0,rgba(14,14,27,1)_24px,rgba(22,22,40,1)_24px,rgba(22,22,40,1)_48px)]
+        bg-bg-primary
         text-white
       "
     >

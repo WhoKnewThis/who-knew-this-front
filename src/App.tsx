@@ -12,6 +12,7 @@ import { AppWrapper, ContentWrapper } from './components/Layout';
 import LoginPage from './pages/LoginPage';
 import TopicDetail from './pages/TopicDetail';
 import SignUpPage from './pages/SignUpPage';
+import SearchResultsPages from './pages/SearchResultsPages';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/topic/:topicId" element={<TopicDetail />} />
                 <Route path="/sign" element={<SignUpPage/>}/>
+                <Route path="/search" element={<SearchResultsPages/>}/>
               </Routes>
             </ContentWrapper>
             <Footer />
