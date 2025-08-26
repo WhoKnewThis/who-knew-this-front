@@ -21,12 +21,12 @@ export default function SearchBar({ value, onChange, onSearch }: Props) {
         onChange={onChange}
         onKeyDown={handleKeyDown}
         placeholder="궁금한 주제를 검색해보세요."
-        className="w-full h-[46px] px-4 py-2 mb-[155px] rounded-full border border-gray-300 
+        className="w-full h-[56px] px-4 py-2 mb-[155px] rounded-[20px] border border-gray-300 
                    focus:outline-none focus:ring-2 focus:ring-btn-sub-purple2"
       />
       <button
         onClick={onSearch}
-        className="absolute right-0 top-0 h-[46px] px-6 text-white bg-btn-primary rounded-r-full hover:bg-btn-primary2"
+        className="absolute right-0 top-0 h-[56px] px-6 text-white bg-btn-primary rounded-r-[20px] hover:bg-btn-primary2"
       >
         검색
       </button>
