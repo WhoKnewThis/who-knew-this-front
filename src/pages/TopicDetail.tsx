@@ -100,7 +100,7 @@ export default function TopicDetail() {
   const difficultyPct = useMemo(() => difficultyToPercent(topic?.difficulty), [topic]);
 
   return (
-    <div className="min-h-screen bg-bg-primary text-white">
+    <div className=" bg-bg-primary text-white">
       <div className="max-w-4xl mx-auto px-6 pt-28 pb-24">
         {loading && (
           <div className="bg-white/5 backdrop-blur rounded-2xl p-8 shadow-xl border border-white/10">
@@ -146,7 +146,7 @@ export default function TopicDetail() {
               <div className="mt-6">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-sm uppercase tracking-wide text-white/70">
-                    difficulty: {topic.difficulty ?? "n/a"}
+                    difficulty : {topic.difficulty ?? "n/a"}
                   </span>
                   <span className="text-xs text-white/60">{difficultyPct}%</span>
                 </div>
