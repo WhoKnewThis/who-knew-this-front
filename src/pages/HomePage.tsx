@@ -42,7 +42,7 @@ export default function HomePage() {
     
 try {
       setSearching(true);
-      const { data } = await axios.get("/topics/search", { params: { keyword: q, q } });
+      const { data } = await axios.get(`/topics/search?keyword=${encodeURIComponent(q)}&q=${encodeURIComponent(q)}`);
       const results: Array<{ id: number | string; title: string }> =
         Array.isArray(data) ? data : [];
 
