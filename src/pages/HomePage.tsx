@@ -35,8 +35,8 @@ export default function HomePage() {
   const handleSearch = async () => {
     if (searching) return;
     const q = query.trim();
-    if (!q) {
-        alert("검색어를 입력해주세요.");
+    if (q.length<2) {
+        alert("검색어를 두 글자 이상 입력해주세요");
         return;
     }
     
