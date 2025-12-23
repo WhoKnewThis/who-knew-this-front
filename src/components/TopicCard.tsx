@@ -22,7 +22,7 @@ export default function TopicCard({ topic }: Props) {
           </span>
         ))}
       </div>
-            <Link to={`/topic/${topic.id}`}>
+            <Link to={`/topics/${topic.id}`}>
         <h2 className="text-bg-primary text-2xl font-bold m-12 text-center">
           {" "}
           {topic.title}
