@@ -15,11 +15,12 @@ const NoResultsPage: React.FC<NoResultsPageProps> = ({ keyword }) => {
           "<strong>{keyword}</strong>"에 대한 검색 결과가 없습니다.
         </p>
         <p className="text-text-primary/70 mb-6">
-          철자를 확인하거나 다른 키워드로 다시 검색해 보세요.
+          철자를 확인하거나 다른 키워드로 다시 검색해 보세요. <br/>
+          찾으시는 내용이 없다면, 로그인 후 내용을 추가해보세요.
         </p>
         <Link
           to="/"
-          className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300"
+          className="inline-block bg-btn-primary hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300"
         >
           홈으로 돌아가기
         </Link>
