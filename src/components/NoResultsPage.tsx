@@ -20,7 +20,7 @@ const NoResultsPage: React.FC<NoResultsPageProps> = ({ keyword }) => {
         </p>
         <Link
           to="/"
-          className="inline-block bg-btn-primary hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300"
+          className="inline-block bg-btn-primary hover:bg-btn-primary2 text-bg-primary py-2 px-4 rounded-lg transition duration-300"
         >
           홈으로 돌아가기
         </Link>
