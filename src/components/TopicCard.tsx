@@ -7,7 +7,7 @@ interface Props {
 
 export default function TopicCard({ topic }: Props) {
   return (
-    <div className="w-[385x] h-[300px] p-8 mt-6 rounded shadow transition-all duration-300 hover:shadow-xl hover:-translate-y-2 bg-gradient-to-br from-btn-sub-purple2 to-btn-sub hover:from-btn-sub hover:to-btn-sub-purple2">
+    <div className="h-[300px] p-8 mt-6 rounded shadow transition-all duration-300 hover:shadow-xl hover:-translate-y-2 bg-gradient-to-br from-btn-sub-purple2 to-btn-sub hover:from-btn-sub hover:to-btn-sub-purple2">
       {/* 
       <p className="text-gray-700 mb-4">{topic.summary}</p> */}
 
