@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams, Link } from "react-router-dom";
 import axios from "../api/axios";
+import NoResultsPage from "../components/NoResultsPage";
 
 type TopicLite = { id: number | string; title: string; summary?: string; tags?: string[] };
 
@@ -32,6 +33,10 @@ export default function SearchResults() {
     return () => controller.abort();
   }, [keyword]);
 
+  if (!loading && !error && results.length === 0) {
+    return <NoResultsPage keyword={keyword} />;
+  }
+
   return (
     <div className="min-h-screen bg-[#0f111a] text-white">
       <div className="max-w-5xl mx-auto px-6 pt-28 pb-16">
@@ -61,12 +66,6 @@ export default function SearchResults() {
               </li>
             ))}
           </ul>
-        )}
-
-        {!loading && !error && results.length === 0 && (
-          <div className="mt-6 bg-white/5 border border-white/10 rounded-xl p-6">
-            결과가 없습니다. 철자나 다른 키워드로 검색해 보세요.
-          </div>
         )}
       </div>
     </div>
