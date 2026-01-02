@@ -16,7 +16,7 @@ export default function TopicCard({ topic }: Props) {
         {topic.tags?.map((tag) => (
           <button
             key={tag}
-            className="text-base inline-block bg-[#3A5BA0] text-text-primary px-4 py-2 rounded-full shadow-md"
+            className="text-base inline-block bg-bg-primary2 text-text-primary px-4 py-2 rounded-full shadow-md"
           >
             # {tag}
           </button>
