@@ -100,7 +100,7 @@ try {
             <h1 className="text-text-primary text-2xl font-bold">
               What's Today's WKT?{" "}
             </h1>
-            <button onClick={refetch} disabled={loading} className="... disabled:opacity-60">
+            <button onClick={refetch} disabled={loading} className="... disabled:opacity-60 text-text-primary">
               다른 주제 보기
             </button>
 
