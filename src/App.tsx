@@ -13,6 +13,7 @@ import LoginPage from './pages/LoginPage';
 import TopicDetail from './pages/TopicDetail';
 import SignUpPage from './pages/SignUpPage';
 import SearchResultsPages from './pages/SearchResultsPages';
+import AuthCallback from './pages/AuthCallback';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
                 <Route path="/topics/:topicId" element={<TopicDetail />} />
                 <Route path="/sign" element={<SignUpPage/>}/>
                 <Route path="/search" element={<SearchResultsPages/>}/>
+                <Route path="/auth/callback" element={<AuthCallback/>}/>
               </Routes>
             </ContentWrapper>
             <Footer />
