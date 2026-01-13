@@ -26,6 +26,8 @@ export default function AuthCallback() {
         console.error(e);
         navigate("/login?error=oauth");
       }
+      // console.log("auth_code:", code);
+
     };
 
     exchange();
