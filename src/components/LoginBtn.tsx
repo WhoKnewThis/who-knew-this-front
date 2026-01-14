@@ -1,5 +1,5 @@
 import React from "react";
-
+//구글 화면으로 보내는 단계 
 export default function LoginBtn() {
   const state = crypto.randomUUID();
   localStorage.setItem("google_oauth_state", state);
