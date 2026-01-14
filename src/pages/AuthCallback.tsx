@@ -27,6 +27,7 @@ export default function AuthCallback() {
         if(refresh_token) localStorage.setItem("refreshToken",refresh_token);
         navigate("/dashboard");
       } catch (e:any) {
+        console.log("CATCH HIT!!!");    
         console.log("status:", e?.response?.status);
         console.log("data:", e?.response?.data);
         console.error(e);
