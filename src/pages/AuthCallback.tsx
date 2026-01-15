@@ -1,13 +1,16 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function AuthCallback() {
+  const ran=useRef(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const code = params.get("code");
+    if (ran.current)return;
+    ran.current=true;
 
     if (!code) {
       navigate("/login");
@@ -27,9 +30,11 @@ export default function AuthCallback() {
         if(refresh_token) localStorage.setItem("refreshToken",refresh_token);
         navigate("/dashboard");
       } catch (e:any) {
-        console.log("CATCH HIT!!!");    
         console.log("status:", e?.response?.status);
-        console.log("data:", e?.response?.data);
+        console.log("data(raw):", e?.response?.data);
+        console.log("data(JSON):", JSON.stringify(e?.response?.data, null, 2));
+        console.log("message:", e?.message);
+        console.log("axios config url:", e?.config?.url);
         console.error(e);
         navigate("/login?error=oauth");
       }
