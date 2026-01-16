@@ -19,15 +19,19 @@ export default function AuthCallback() {
 
     const exchange = async () => {
       try {
-        const res = await axios.post("/api/auth/login/google", {
-          auth_code:code,
-        });
-        const { access_token, refresh_token } = res.data;
+        const baseUrl = (process.env.REACT_APP_API_BASE_URL ?? "").replace(/\/$/, "");
+        const url = baseUrl
+          ? `${baseUrl}/api/auth/login/google`
+          : `/api/auth/login/google`;
 
+        const res = await axios.post(url, { auth_code: code });
+
+        const { access_token, refresh_token } = res.data;
         if (!access_token) throw new Error("No access_token in response");
 
         localStorage.setItem("accessToken", access_token);
-        if(refresh_token) localStorage.setItem("refreshToken",refresh_token);
+        if (refresh_token) localStorage.setItem("refreshToken", refresh_token);
+
         navigate("/dashboard");
       } catch (e:any) {
         console.log("status:", e?.response?.status);
