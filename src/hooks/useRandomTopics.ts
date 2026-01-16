@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,useCallback } from "react";
 import instance from "../api/axios";
 
 export interface Topic {
@@ -13,10 +13,10 @@ export const useRandomTopics = (count: number = 3) => {
   const [topics, setTopics] = useState<Topic[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchTopic = async () => {
+ const fetchTopic = useCallback(async () => {
     try {
       setLoading(true);
-      const res = await instance.get(`/topics/random?count=${count}`); 
+      const res = await instance.get(`/topics/random?count=${count}`);
       console.log("API 응답 데이터:", res.data);
       setTopics(res.data);
     } catch (error) {
@@ -24,11 +24,11 @@ export const useRandomTopics = (count: number = 3) => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [count]);
 
   useEffect(() => {
     fetchTopic();
-  }, [count]);
+  }, [fetchTopic]);
 
   return { topics, loading, refetch: fetchTopic };
 };
