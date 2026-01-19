@@ -1,22 +1,23 @@
 import React from "react";
 //구글 화면으로 보내는 단계 
 export default function LoginBtn() {
-  const state = crypto.randomUUID();
-  localStorage.setItem("google_oauth_state", state);
-
-  const GOOGLE_AUTH_URL =
-    "https://accounts.google.com/o/oauth2/v2/auth?" +
-    new URLSearchParams({
-      client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID!,
-      redirect_uri: process.env.REACT_APP_GOOGLE_REDIRECT_URI!,
-      response_type: "code",
-      scope: "openid email profile",
-      state,
-    }).toString();
-
-  const handleGoogleLogin = () => {
-    window.location.href = GOOGLE_AUTH_URL;
+    const handleGoogleLogin = () => {
+      const state = crypto.randomUUID();
+      localStorage.setItem("google_oauth_state", state);
+      const GOOGLE_AUTH_URL =
+        "https://accounts.google.com/o/oauth2/v2/auth?" +
+        new URLSearchParams({
+          client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID!,
+          redirect_uri: process.env.REACT_APP_GOOGLE_REDIRECT_URI!,
+          response_type: "code",
+          scope: "openid email profile",
+          state,
+      }).toString();
+    
+      window.location.href = GOOGLE_AUTH_URL;
   };
+
+
 
   return (
     <button

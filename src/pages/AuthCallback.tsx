@@ -7,10 +7,11 @@ export default function AuthCallback() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const code = params.get("code");
     if (ran.current)return;
     ran.current=true;
+
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get("code");
 
     if (!code) {
       navigate("/login");
@@ -20,15 +21,14 @@ export default function AuthCallback() {
     const exchange = async () => {
       try {
         const baseUrl = (process.env.REACT_APP_API_BASE_URL ?? "").replace(/\/$/, "");
-        const url = baseUrl
-          ? `${baseUrl}/api/auth/login/google`
-          : `/api/auth/login/google`;
-
-        const res = await axios.post(url, { auth_code: code });
-
+        const loginUrl = baseUrl ? `${baseUrl}/api/auth/login/google` : "/api/auth/login/google";
+        const meUrl = baseUrl ? `${baseUrl}/api/users/me` : "/api/users/me";
+        //#1) 토근 교환 
+        const res = await axios.post(loginUrl, { auth_code: code });
         const { access_token, refresh_token } = res.data;
-        if (!access_token) throw new Error("No access_token in response");
 
+        if (!access_token) throw new Error("No access_token in response");
+        //#2) 토근 저장 
         localStorage.setItem("accessToken", access_token);
         if (refresh_token) localStorage.setItem("refreshToken", refresh_token);
 
