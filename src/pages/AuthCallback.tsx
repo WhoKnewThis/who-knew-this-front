@@ -49,6 +49,8 @@ export default function AuthCallback() {
         const meRes= await axios.get(meUrl,{
           headers:{Authorization:`Bearer ${access_token}`},
         });
+        localStorage.setItem("me", JSON.stringify(meRes.data));
+
 
         navigate("/",{replace:true});
       } catch (e:any) {
