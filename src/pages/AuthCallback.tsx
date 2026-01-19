@@ -12,17 +12,30 @@ export default function AuthCallback() {
 
     const params = new URLSearchParams(window.location.search);
     const code = params.get("code");
+    const returnedState= params.get("state");
+    
+    const savedState=localStorage.getItem("googe_oauth_state");
+
+     // state 검증(권장): CSRF 방지
+    if (!returnedState || !savedState || returnedState !== savedState) {
+      navigate("/login?error=state", { replace: true });
+      return;
+    }
 
     if (!code) {
-      navigate("/login");
+      navigate("/login?error=nocode",{replace:true});
       return;
     }
 
     const exchange = async () => {
       try {
         const baseUrl = (process.env.REACT_APP_API_BASE_URL ?? "").replace(/\/$/, "");
+        if(!baseUrl){
+          console.warn("REACT_APP_API_BASE_URL is empty. Check env settings.");
+        }
         const loginUrl = baseUrl ? `${baseUrl}/api/auth/login/google` : "/api/auth/login/google";
         const meUrl = baseUrl ? `${baseUrl}/api/users/me` : "/api/users/me";
+       
         //#1) 토근 교환 
         const res = await axios.post(loginUrl, { auth_code: code });
         const { access_token, refresh_token } = res.data;
@@ -32,7 +45,12 @@ export default function AuthCallback() {
         localStorage.setItem("accessToken", access_token);
         if (refresh_token) localStorage.setItem("refreshToken", refresh_token);
 
-        navigate("/dashboard");
+        //#3) 내 정보 조회 
+        const meRes= await axios.get(meUrl,{
+          headers:{Authorization:`Bearer ${access_token}`},
+        });
+
+        navigate("/",{replace:true});
       } catch (e:any) {
         console.log("status:", e?.response?.status);
         console.log("data(raw):", e?.response?.data);
@@ -40,7 +58,7 @@ export default function AuthCallback() {
         console.log("message:", e?.message);
         console.log("axios config url:", e?.config?.url);
         console.error(e);
-        navigate("/login?error=oauth");
+        navigate("/login?error=oauth", { replace: true });
       }
     };
 
