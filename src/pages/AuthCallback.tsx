@@ -59,6 +59,7 @@ export default function AuthCallback() {
         });
 
         localStorage.setItem("me", JSON.stringify(meRes.data));
+        window.dispatchEvent(new Event("auth-changed"));
 
         // 4) 콜백 URL 정리 + 메인으로 이동
         navigate("/", { replace: true });

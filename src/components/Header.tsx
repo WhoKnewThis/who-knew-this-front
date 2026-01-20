@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import React from 'react';
 import LoginBtn from './LoginBtn';
 import { useNavigate } from 'react-router-dom';
 
